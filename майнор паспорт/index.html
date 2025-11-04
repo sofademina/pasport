@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM_JS. Считываем информацию из DOM</title>
+</head>
+<body>
+        <tr>
+            <td>
+                <h3>Навигация</h3>
+                <ul>
+                    <li><a href="index.html" target="_self">DOM_JS. Считываем информацию из DOM</a>
+                    <li><a href="2.html" target="_self">Изменяем кириллицу на латиницу по клику</a>
+                    <li><a href="3.html" target="_self">Решение алгоритмической задачи</a>
+                </ul>
+
+
+                <h3></h3>
+            </td>
+        </tr>
+  <h2>Паспорт гражданина</h2>
+  <p><strong>Фамилия:</strong> Демина</p>
+  <p><strong>Имя:</strong> Софья</p>
+  <p><strong>Год рождения:</strong> 2006</p>
+  <p><strong>Город:</strong> Москва</p>
+
+  <button onclick="readData()">Считать из DOM</button>
+
+  <p id="result"></p>
+
+  <script>
+    function readData() {
+
+      const paragraphs = document.getElementsByTagName('p');
+
+      const surname = paragraphs[0].childNodes[1].textContent.trim();
+      const name = paragraphs[1].childNodes[1].textContent.trim();
+      const year = paragraphs[2].childNodes[1].textContent.trim();
+
+      console.log("Фамилия:", surname);
+      console.log("Имя:", name);
+      console.log("Год рождения:", year);
+
+      document.getElementById("result").innerText =
+        `Из DOM считано: ${surname} ${name}, ${year} г.р.`;
+    }
+  </script>
+
+  <hr>
+  <p><em>Скриншот консоли:</em></p>
+  <img src="screenshot_dom.png" width="600">
+
+</body>
+</html>
